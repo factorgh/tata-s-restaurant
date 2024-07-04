@@ -4,10 +4,13 @@ import { useForm } from "react-hook-form";
 import { auth } from "../config/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const Auth = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -17,13 +20,16 @@ const Auth = () => {
 
   const navigate = useNavigate();
   const onSubmit = (val) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, val.email, val.password)
       .then((user) => {
+        setIsLoading(false);
         navigate("/dashboard");
         toast.success("Logged In successful");
         localStorage.setItem("user", JSON.stringify(user));
       })
       .catch((err) => {
+        setIsLoading(false);
         if (err.code === "auth/invalid-email") toast.error("Invalid Email");
         if (err.code === "auth/invalid-credential")
           toast.error("Invalid Credential");
@@ -71,7 +77,11 @@ const Auth = () => {
                 </span>
               )}
               <button className="w-[200px] h-[50px] mt-5  text-white bg-orange-300 rounded-3xl ">
-                Login
+                {isLoading ? (
+                  <CircularProgress size={20} color="inherit" />
+                ) : (
+                  "Login"
+                )}
               </button>
             </form>
           </div>
