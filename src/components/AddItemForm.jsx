@@ -35,7 +35,7 @@ const AddItemForm = ({ handleClose }) => {
     console.log(values);
 
     const newItem = {
-      name: values.Name,
+      name: values.Name.toLowerCase(),
       price: values.Price,
       quantity: values.Quantity,
       category: values.selectedField,

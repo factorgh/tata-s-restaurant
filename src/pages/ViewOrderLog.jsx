@@ -115,14 +115,15 @@ function ViewOrderLog() {
     setInputValue(""); // Reset input value
   };
 
-  const handleChange = async (event) => {
+  const handleChange = (event) => {
     const queryText = event.target.value.toLowerCase();
     setInputValue(event.target.value); // Update input value
 
     if (queryText.length > 0) {
-      const q = query(collection(db, "items"), where("name", ">=", queryText));
-      const querySnapshot = await getDocs(q);
-      const filtered = querySnapshot.docs.map((doc) => doc.data());
+      // Filter items manually
+      const filtered = items.filter((item) =>
+        item.name.toLowerCase().includes(queryText)
+      );
       setFilteredItems(filtered);
     } else {
       setFilteredItems([]);
