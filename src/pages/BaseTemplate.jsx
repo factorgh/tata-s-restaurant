@@ -29,7 +29,7 @@ const BaseTemplate = () => {
       const currentHour = new Date().getHours();
       if (currentHour < 11) {
         return "Good Morning";
-      } else if (currentHour < 18) {
+      } else if (currentHour < 17) {
         return "Good Afternoon";
       } else {
         return "Good Evening";

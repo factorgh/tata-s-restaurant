@@ -1,6 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Button, Form, Input, InputNumber } from "antd";
-import { collection, addDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 // import { db } from "../config/firebaseConfig";
 import { useFirebase } from "../context/firebaseContext";
 import moment from "moment/moment";
@@ -43,13 +51,32 @@ const AddItemForm = ({ handleClose }) => {
       category: values.selectedField,
       createdAt: formattedDate,
     };
-    const itemsRef = await addDoc(collection(db, "items"), newItem);
 
-    dispatch(addNewItem(newItem));
+    const itemsCollectionRef = collection(db, "items");
+    const q = query(itemsCollectionRef, where("name", "==", newItem.name));
+    const querySnapshot = await getDocs(q);
 
-    console.log(itemsRef);
+    if (!querySnapshot.empty) {
+      // Item exists, update the quantity
+      querySnapshot.forEach(async (document) => {
+        const itemDocRef = doc(db, "items", document.id);
+        const existingQuantity = document.data().quantity;
+        await updateDoc(itemDocRef, {
+          quantity: existingQuantity + newItem.quantity,
+        });
 
-    ///Update redux store
+        // Update Redux store
+        dispatch(addNewItem(newItem));
+      });
+    } else {
+      // Item does not exist, add new item
+      const itemsRef = await addDoc(itemsCollectionRef, newItem);
+
+      // Update Redux store
+      dispatch(addNewItem(newItem));
+
+      console.log(itemsRef);
+    }
 
     handleClose();
   };
@@ -107,8 +134,8 @@ const AddItemForm = ({ handleClose }) => {
 
       <Form.Item label="Category" name="selectedField">
         <Select>
-          <Select.Option value="dishes">Dishes</Select.Option>
-          <Select.Option value="snacks">Snacks</Select.Option>
+          <Select.Option value="dish">Dishes</Select.Option>
+          <Select.Option value="snack">Snacks</Select.Option>
         </Select>
       </Form.Item>
       <Form.Item

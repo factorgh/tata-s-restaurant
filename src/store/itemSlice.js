@@ -9,7 +9,16 @@ const itemSlice = createSlice({
   initialState,
   reducers: {
     addNewItem(state, action) {
-      state.items.push(action.payload);
+      ///Check if inventory already exist
+      const existingItem = state.items.find(
+        (item) => item.name === action.payload.name
+      );
+
+      if (existingItem) {
+        existingItem.quantity += action.payload.quantity;
+      } else {
+        state.items.push(action.payload);
+      }
     },
     getAllItems(state, action) {
       state.items = action.payload;
