@@ -70,6 +70,13 @@ function ViewOrderLog() {
   }, []);
 
   const onSubmit = async (val) => {
+    if (
+      !val.quantity ||
+      !selectedItem.name ||
+      !selectedItem.category ||
+      !selectedItem.price
+    )
+      return;
     const totalAmount = selectedItem.price * val.quantity;
     const isDish = selectedItem.category === "dish";
     let res;
