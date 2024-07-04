@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { db } from "../config/firebaseConfig";
+// import { db } from "../config/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 
 import { useForm } from "react-hook-form";
@@ -13,8 +13,10 @@ import { handleSale } from "../services/api";
 
 import { Modal, Button } from "antd";
 import moment from "moment";
+import { useFirebase } from "../context/firebaseContext";
 
 export default function FadeModalDialog() {
+  const { db } = useFirebase();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const orders = useSelector((state) => state.orders.orders);

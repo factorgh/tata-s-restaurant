@@ -1,13 +1,14 @@
-import { db } from "../config/firebaseConfig";
+// import { db } from "../config/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 import PaystackHandler from "../components/PaystackHandler";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
-
+import { useFirebase } from "../context/firebaseContext";
 
 const CheckoutPage = () => {
+  const { db } = useFirebase();
   const navigate = useNavigate();
   const {
     register,

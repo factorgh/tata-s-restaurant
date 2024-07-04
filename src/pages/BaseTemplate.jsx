@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { auth } from "../config/firebaseConfig";
 import { signOut } from "firebase/auth";
 import DateRangePicker from "../components/DateRangePicker";
+import NetworkStatus from "../components/NetworkStatus";
 
 import toast from "react-hot-toast";
 
@@ -139,6 +140,7 @@ const BaseTemplate = () => {
               <h3 className="text-xl font-semibold p-3 text-slate-600">
                 {greeting}
               </h3>
+              <NetworkStatus />
               <div className="flex gap-5 items-center">
                 <DateRangePicker setDateRange={setDateRange} />
                 <div className="w-[30px] h-[30px] bg-orange-500 flex items-center">

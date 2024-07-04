@@ -9,10 +9,11 @@ import {
   doc,
   query,
 } from "firebase/firestore";
-import { db } from "../config/firebaseConfig";
+// import { db } from "../config/firebaseConfig";
 import moment from "moment/moment";
 import { useDispatch } from "react-redux";
 import { addNewItem } from "../store/itemSlice";
+import { useFirebase } from "../context/firebaseContext";
 
 const formItemLayout = {
   labelCol: {
@@ -34,6 +35,7 @@ const formItemLayout = {
 };
 
 const AddInventoryForm = ({ handleClose }) => {
+  const { db } = useFirebase();
   const dispatch = useDispatch();
 
   ///Submit form

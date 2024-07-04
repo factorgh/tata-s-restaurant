@@ -1,16 +1,18 @@
 import banner from "../assets/banner.jpg";
 import logo from "../assets/logo.png";
 import { useForm } from "react-hook-form";
-import { auth } from "../config/firebaseConfig";
+
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useFirebase } from "../context/firebaseContext";
 
 const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { auth } = useFirebase();
   const {
     register,
     handleSubmit,

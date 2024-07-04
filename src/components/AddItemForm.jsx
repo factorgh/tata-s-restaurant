@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Button, Form, Input, InputNumber } from "antd";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../config/firebaseConfig";
+// import { db } from "../config/firebaseConfig";
+import { useFirebase } from "../context/firebaseContext";
 import moment from "moment/moment";
 import { useDispatch } from "react-redux";
 import { addNewItem } from "../store/itemSlice";
@@ -27,6 +28,7 @@ const formItemLayout = {
 };
 
 const AddItemForm = ({ handleClose }) => {
+  const { db } = useFirebase();
   const dispatch = useDispatch();
 
   ///Submit form

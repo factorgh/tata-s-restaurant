@@ -75,62 +75,60 @@ export function TableWithStripedRows() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map(
-            ({ id, name, price, date, status, quantity }, index) => (
-              <tr key={id} className="even:bg-orange-50">
-                <td className="p-2">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {id}
-                  </Typography>
-                </td>
-                <td className="p-2">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {name}
-                  </Typography>
-                </td>
-                <td className="p-2">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {price}
-                  </Typography>
-                </td>
-                <td className="p-2">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {date}
-                  </Typography>
-                </td>
-                <td className="p-2">
-                  <button className="text-sm rounded-full p-2 text-orange-300 border border-slate-200">
-                    {status}
-                  </button>
-                </td>
-                <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {quantity}
-                  </Typography>
-                </td>
-              </tr>
-            )
-          )}
+          {TABLE_ROWS.map(({ id, name, price, date, status, quantity }) => (
+            <tr key={id} className="even:bg-orange-50">
+              <td className="p-2">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal"
+                >
+                  {id}
+                </Typography>
+              </td>
+              <td className="p-2">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal"
+                >
+                  {name}
+                </Typography>
+              </td>
+              <td className="p-2">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal"
+                >
+                  {price}
+                </Typography>
+              </td>
+              <td className="p-2">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal"
+                >
+                  {date}
+                </Typography>
+              </td>
+              <td className="p-2">
+                <button className="text-sm rounded-full p-2 text-orange-300 border border-slate-200">
+                  {status}
+                </button>
+              </td>
+              <td className="p-4">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal"
+                >
+                  {quantity}
+                </Typography>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Card>

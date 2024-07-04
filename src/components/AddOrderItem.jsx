@@ -9,15 +9,17 @@ import { MdAdd } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addNewOrder } from "../store/orderSlice";
-import { db } from "../config/firebaseConfig";
+// import { db } from "../config/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { format } from "date-fns";
+import { useFirebase } from "../context/firebaseContext";
 
 export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
+  const { db } = useFirebase();
 
   let res;
 
