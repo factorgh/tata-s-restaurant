@@ -128,11 +128,22 @@ export const handleSale = async (sale) => {
 
       console.log(quantitySold, itemName);
 
-      //////ITEM SOLD IS AVAILABLE HERE
+      // Fetch the item details to get the category
+      const q = query(collection(db, "items"), where("name", "==", itemName));
+      const querySnapshot = await getDocs(q);
 
-      // Update the quantity and track the sale
-      await reduceItemQuantityByName(itemName, quantitySold);
-      await trackSales(itemName);
+      if (!querySnapshot.empty) {
+        const itemData = querySnapshot.docs[0].data();
+
+        // Check if the item category is "dish"
+        if (itemData.category !== "dish") {
+          // Update the quantity and track the sale
+          await reduceItemQuantityByName(itemName, quantitySold);
+          await trackSales(itemName);
+        }
+      } else {
+        console.log(`Item with name ${itemName} not found`);
+      }
     }
   } catch (error) {
     console.error("Error handling sale:", error);
