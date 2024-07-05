@@ -23,6 +23,9 @@ const NetworkStatus = () => {
         backgroundColor: isOnline ? "green" : "red",
         color: "white",
         textAlign: "center",
+        borderRadius: 20,
+        fontSize: 10,
+        opacity: isOnline ? 0.2 : 1,
       }}
     >
       {isOnline ? "You are online" : "You are offline"}
