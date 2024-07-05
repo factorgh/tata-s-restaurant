@@ -3,11 +3,11 @@ import ItemTable from "../components/ItemTable";
 
 const Items = () => {
   return (
-    <div className="mx-3 w-full p-3">
+    <div className=" w-full p-2 mx-2">
       {/* header section */}
-      <div className="flex p-3 justify-between items-center mt-5 mx-5">
+      <div className="flex p-3 justify-between items-center  mx-5">
         <p>Total Item </p>
-        <AddItemModal  />
+        <AddItemModal />
       </div>
 
       {/* Category slider section */}

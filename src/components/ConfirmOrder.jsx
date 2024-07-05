@@ -23,7 +23,7 @@ export default function FadeModalDialog() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [discounted, setIsDiscounted] = React.useState(false);
-
+  console.log(discounted);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -43,7 +43,7 @@ export default function FadeModalDialog() {
     0
   );
   const onSubmit = async (val) => {
-    if (val.code && orders.items.category === "dish") {
+    if (val.code) {
       setIsDiscounted(true);
     }
     const formattedDate = moment(new Date()).format("YYYY-MM-DD");

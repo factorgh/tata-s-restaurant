@@ -48,7 +48,7 @@ const ItemTable = () => {
     <Table
       columns={columns}
       dataSource={orders}
-      pagination={10}
+      pagination={8}
       loading={loading}
     />
   );
