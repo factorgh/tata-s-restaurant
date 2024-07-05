@@ -25,7 +25,7 @@ const NetworkStatus = () => {
         textAlign: "center",
         borderRadius: 20,
         fontSize: 10,
-        opacity: isOnline ? 0.2 : 1,
+        opacity: isOnline ? 0.2 : 0.5,
       }}
     >
       {isOnline ? "You are online" : "You are offline"}
