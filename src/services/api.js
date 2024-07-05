@@ -18,6 +18,8 @@ export const getAllOrders = async (
   startDate = new Date(),
   endDate = new Date()
 ) => {
+  ////Checking if date range filtering is working
+  console.log(startDate, endDate);
   // Define the start and end dates
   const start = startOfDay(startDate);
   const end = endOfDay(endDate || startDate); // If endDate is not provided, use the same date
@@ -139,7 +141,7 @@ export const handleSale = async (sale) => {
         if (itemData.category !== "dish") {
           // Update the quantity and track the sale
           await reduceItemQuantityByName(itemName, quantitySold);
-          await trackSales(itemName);
+          // await trackSales(itemName);
         }
       } else {
         console.log(`Item with name ${itemName} not found`);

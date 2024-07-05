@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import { DatePicker } from "antd";
 
-import moment from "moment";
-
 const DateRangePicker = ({ setDateRange }) => {
   const handleDateChange = (dates) => {
-    console.log("<------------selected dates---------------->", moment(dates));
+    console.log("<--------date1------------>");
+    console.log("<------------selected dates---------------->", dates);
     if (dates) {
       setDateRange(dates);
     } else {
@@ -15,7 +14,7 @@ const DateRangePicker = ({ setDateRange }) => {
 
   return (
     <DatePicker.RangePicker
-      placeholder={["startDate", "EndDate"]}
+      placeholder={["startDate", "endDate"]}
       allowEmpty={[false, true]}
       onChange={handleDateChange}
     />
