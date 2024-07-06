@@ -45,12 +45,14 @@ const ItemTable = () => {
   }, [dispatch]);
 
   return (
-    <Table
-      columns={columns}
-      dataSource={orders}
-      pagination={8}
-      loading={loading}
-    />
+    <div style={{ width: "100%" }}>
+      <Table
+        columns={columns}
+        dataSource={orders}
+        pagination={8}
+        loading={loading}
+      />
+    </div>
   );
 };
 export default ItemTable;
