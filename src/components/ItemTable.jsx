@@ -47,7 +47,6 @@ const ItemTable = () => {
   return (
     <div style={{ marginLeft: 10, overflow: "scroll", padding: 30 }}>
       <Table
-        scroll="true"
         size="middle"
         columns={columns}
         dataSource={orders}
