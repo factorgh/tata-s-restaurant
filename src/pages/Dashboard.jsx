@@ -83,13 +83,13 @@ const Dashboard = () => {
   console.log("<-----totalRev------>", totalRevenue);
   const reservations = [];
   return (
-    <div className="p-2 w-[100%] h-[100%] ">
+    <div className="p-2 mx-2 w-[100%] h-[100%] ">
       {/* Main content dashboard */}
       <motion.div
         initial={{ opacity: 0, x: 300 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className=" flex mt-8 items-start gap-5 mb-5 mx-8 "
+        className=" flex mt-8  gap-5 mb-5 items-center justify-center "
       >
         <DashboardItem
           icon={<FiBarChart color="white" size={30} />}
