@@ -45,7 +45,7 @@ const ItemTable = () => {
   }, [dispatch]);
 
   return (
-    <div style={{ marginLeft: 10, overflow: "scroll", padding: 30 }}>
+    <div style={{ marginLeft: 10, overflow: "scroll", padding: 30, }}>
       <Table
         size="middle"
         columns={columns}
