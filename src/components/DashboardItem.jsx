@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 const DashboardItem = ({ icon, title, totalCount, bgColor }) => {
-  let cssClasses = `w-[250px] h-[100px] flex p-3 justify-center  items-center  rounded-lg shadow-md gap-5 mx-1 `;
+  let cssClasses = `w-[200px] h-[100px] flex p-3 justify-center  items-center  rounded-lg shadow-md gap-5 mx-1 `;
   cssClasses += " " + bgColor;
   return (
     <div className={cssClasses}>
