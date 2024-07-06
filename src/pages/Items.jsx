@@ -11,7 +11,7 @@ const Items = () => {
       </div>
 
       {/* Category slider section */}
-      <div className="w-[100%] h-[100%] p-2">
+      <div className="w-[100%] h-[100%] p-2 overflow-scroll">
         <ItemTable />
       </div>
     </div>
