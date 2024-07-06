@@ -11,7 +11,7 @@ const Items = () => {
       </div>
 
       {/* Category slider section */}
-      <div className=" mx-3">
+      <div className="w-[100%] h-[100%] p-2">
         <ItemTable />
       </div>
     </div>
