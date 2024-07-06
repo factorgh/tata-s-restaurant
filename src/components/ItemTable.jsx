@@ -45,7 +45,7 @@ const ItemTable = () => {
   }, [dispatch]);
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", height: "100%", overflow: "scroll" }}>
       <Table
         columns={columns}
         dataSource={orders}
