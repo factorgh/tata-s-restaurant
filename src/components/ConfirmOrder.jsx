@@ -175,9 +175,9 @@ export default function FadeModalDialog() {
               <span className="text-red-300">Payment method is required</span>
             )}
             <div className="flex items-center justify-between  mt-10 w-full">
-              <button className="bg-orange-300 rounded-md p-2 text-white font-semibold">
+              <button className="bg-orange-300 rounded-md p-2">
                 {isLoading ? (
-                  <CircularProgress size={15} color="blue" />
+                  <CircularProgress size={15} color="white" />
                 ) : (
                   "Confirm Order"
                 )}
@@ -188,7 +188,7 @@ export default function FadeModalDialog() {
                 onClick={handlePaystack}
               >
                 {isLoading ? (
-                  <CircularProgress size={15} color="blue" />
+                  <CircularProgress size={15} color="white" />
                 ) : (
                   "Continue with paystack"
                 )}
