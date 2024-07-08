@@ -14,10 +14,12 @@ import { handleSale } from "../services/api";
 import { Modal, Button } from "antd";
 import moment from "moment";
 import { useFirebase } from "../context/firebaseContext";
+import { CircularProgress } from "@mui/material";
 
 export default function FadeModalDialog() {
   const { db } = useFirebase();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const orders = useSelector((state) => state.orders.orders);
   const navigate = useNavigate();
@@ -43,6 +45,7 @@ export default function FadeModalDialog() {
     0
   );
   const onSubmit = async (val) => {
+    setIsLoading(true);
     if (val.code) {
       setIsDiscounted(true);
     }
@@ -71,11 +74,13 @@ export default function FadeModalDialog() {
 
     reset();
     dispatch(clearOrder());
+    setIsLoading(false);
     navigate("/orders");
   };
 
   ////Paystack payment
   const handlePaystack = async () => {
+    setIsLoading(true);
     try {
       const orderItem = {
         items: orders,
@@ -91,7 +96,9 @@ export default function FadeModalDialog() {
 
       await submitOrder(orderItem); // Call a separate function to handle order submission
       window.location.href = "https://paystack.shop/pay/vt_h4j1yeo1"; // Redirect to Paystack payment page
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.error(
         "Error submitting order or redirecting to Paystack:",
         error
@@ -168,13 +175,23 @@ export default function FadeModalDialog() {
               <span className="text-red-300">Payment method is required</span>
             )}
             <div className="flex items-center justify-between  mt-10 w-full">
-              <button>Confirm Order</button>
+              <button className="bg-orange-300 rounded-md p-2 text-white font-semibold">
+                {isLoading ? (
+                  <CircularProgress size={15} color="white" />
+                ) : (
+                  "Confirm Order"
+                )}
+              </button>
               <Button
                 variant="outlined"
                 color="primary"
                 onClick={handlePaystack}
               >
-                Continue with paystack
+                {isLoading ? (
+                  <CircularProgress size={15} color="white" />
+                ) : (
+                  "Continue with paystack"
+                )}
               </Button>
             </div>
           </div>

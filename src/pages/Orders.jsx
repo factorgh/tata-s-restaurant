@@ -50,7 +50,7 @@ const Orders = () => {
   }, [dateRange, endDate, startDate]);
 
   return (
-    <div className="flex flex-col gap-5 w-full h-full p-5">
+    <div className="flex flex-col gap-5 w-full  h-full p-5">
       {/* Filter section */}
       <div className="flex justify-between items-center ">
         <FilterItem />
@@ -62,7 +62,7 @@ const Orders = () => {
         </div>
       </div>
       <motion.div
-        className="h-[100%] w-[100%] p-2"
+        className=" overflow-y-scroll h-[100%]  w-[100%] p-2 "
         initial={{ opacity: 0, y: 300 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, type: "tween" }}

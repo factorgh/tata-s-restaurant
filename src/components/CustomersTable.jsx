@@ -49,12 +49,21 @@ const CustomersTable = () => {
   }, []);
 
   return (
-    <Table
-      columns={columns}
-      dataSource={customers}
-      pagination={5}
-      loading={loading}
-    />
+    <div
+      style={{
+        overflow: "scroll",
+        padding: 30,
+        height: 900,
+        marginBottom: 20,
+      }}
+    >
+      <Table
+        columns={columns}
+        dataSource={customers}
+        pagination={5}
+        loading={loading}
+      />
+    </div>
   );
 };
 export default CustomersTable;

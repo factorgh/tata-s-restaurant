@@ -79,12 +79,21 @@ const OrderTable = () => {
   }, []);
 
   return (
-    <Table
-      columns={columns}
-      dataSource={orders}
-      pagination={8}
-      loading={loading}
-    />
+    <div
+      style={{
+        overflow: "scroll",
+        padding: 30,
+        height: 900,
+        marginBottom: 20,
+      }}
+    >
+      <Table
+        columns={columns}
+        dataSource={orders}
+        pagination={8}
+        loading={loading}
+      />
+    </div>
   );
 };
 export default OrderTable;
