@@ -11,10 +11,9 @@ import { useDispatch } from "react-redux";
 import { currencyFormatter } from "../utils/formatter";
 import { handleSale } from "../services/api";
 
-import { Modal, Button } from "antd";
+import { Modal, Button, Spin } from "antd";
 import moment from "moment";
 import { useFirebase } from "../context/firebaseContext";
-import { CircularProgress } from "@mui/material";
 
 export default function FadeModalDialog() {
   const { db } = useFirebase();
@@ -176,11 +175,7 @@ export default function FadeModalDialog() {
             )}
             <div className="flex items-center justify-between  mt-10 w-full">
               <button className="bg-orange-300 rounded-md p-2">
-                {isLoading ? (
-                  <CircularProgress size={15} color="white" />
-                ) : (
-                  "Confirm Order"
-                )}
+                {isLoading ? <Spin size={15} color="white" /> : "Confirm Order"}
               </button>
               <Button
                 variant="outlined"
@@ -188,7 +183,7 @@ export default function FadeModalDialog() {
                 onClick={handlePaystack}
               >
                 {isLoading ? (
-                  <CircularProgress size={15} color="white" />
+                  <Spin size={15} color="white" />
                 ) : (
                   "Continue with paystack"
                 )}
